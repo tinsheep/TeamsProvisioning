@@ -63,6 +63,8 @@
       <SubType>Component</SubType>
     </None>
     <None Include="Templates\COBCoreTeamTemplate.json" />
+    <None Include="Templates\hospital.json" />
+    <None Include="Templates\sample.json" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

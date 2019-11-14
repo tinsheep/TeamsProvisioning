@@ -24,18 +24,18 @@ namespace COB.Teams.Provisioning
         static void Main(string[] args)
         {
             // NOTE: in the real world you'd want to fetch these from Azure Key Vault..
-            string clientId = "[AAD CLIENT ID HERE]";
-            string clientSecret = "[AAD CLIENT SECRET HERE]";
-            string tenantDomain = "[TENANT PREFIX HERE].onmicrosoft.com";
+            string clientId = "d4042d6e-bf4b-43d1-bef3-ac3a6e2a756f";
+            string clientSecret = "n8M435t-xWbezwbs=QxPIbAEVkE@TaG.";
+            string tenantDomain = "M365x600226.onmicrosoft.com";
 
             fetchAndStoreAccessToken(clientId, clientSecret, tenantDomain);
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _accessToken);
 
             // NOTE: update these details as required, or pull in from another source (e.g. a file).. 
-            string ownerUPN = "cob@chrisobrien.com";
-            string displayName = "[TEAM NAME HERE]";
-            string description = "[TEAM DESCRIPTION HERE]";
-            string templatePath = "Templates\\COBCoreTeamTemplate.json";
+            string ownerUPN = "https://graph.microsoft.com/beta/users('e6c35bcb-b9f1-4c1f-b867-000818b1d617')";
+            string displayName = "TestTeamTemplate2";
+            string description = "Template App to provision teams";
+            string templatePath = "..\\..\\Templates\\sample.json";
 
             CreateTeam(templatePath, displayName, description, ownerUPN);
         }
@@ -43,8 +43,8 @@ namespace COB.Teams.Provisioning
         private static void CreateTeam(string templatePath, string teamDisplayName, string teamDescription, string teamOwnerID)
         {
             TeamDetails teamConfig = new TeamDetails(templatePath);
-            teamConfig.AddSimpleProperty(DISPLAY_NAME_ATTRIBUTE, teamDisplayName, false);
-            teamConfig.AddSimpleProperty(DESCRIPTION_ATTRIBUTE, teamDescription, false);
+            //teamConfig.AddSimpleProperty(DISPLAY_NAME_ATTRIBUTE, teamDisplayName, false);
+            //teamConfig.AddSimpleProperty(DESCRIPTION_ATTRIBUTE, teamDescription, false);
             teamConfig.AddOwner(OWNER_ATTRIBUTE, teamOwnerID);
 
             string teamConfigString = teamConfig.ToString().Trim();
