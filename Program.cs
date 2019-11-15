@@ -24,9 +24,9 @@ namespace COB.Teams.Provisioning
         static void Main(string[] args)
         {
             // NOTE: in the real world you'd want to fetch these from Azure Key Vault..
-            string clientId = "d4042d6e-bf4b-43d1-bef3-ac3a6e2a756f";
-            string clientSecret = "n8M435t-xWbezwbs=QxPIbAEVkE@TaG.";
-            string tenantDomain = "M365x600226.onmicrosoft.com";
+            string clientId = "client id here";
+            string clientSecret = "secret here";
+            string tenantDomain = "xxxx.onmicrosoft.com";
 
             fetchAndStoreAccessToken(clientId, clientSecret, tenantDomain);
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _accessToken);
